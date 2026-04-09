@@ -1,251 +1,518 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GACHA FRUITS • Vinh Dương</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0a001f 0%, #1a0033 50%, #2a0044 100%);
-            min-height: 100vh;
-            overflow: hidden;
-        }
-        
-        .neon-cyan { text-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff; }
-        .neon-pink { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
-        
-        .fruit-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(20, 10, 40, 0.9);
-            border: 3px solid #4b0082;
-        }
-        
-        .fruit-card:hover {
-            transform: scale(1.12) translateY(-8px);
-            box-shadow: 0 0 35px #ff00ff;
-            border-color: #ff00ff;
-        }
-        
-        .mythical { border-color: #ff00ff !important; box-shadow: 0 0 30px #ff00ff; }
-        .legendary { border-color: #a855f7 !important; box-shadow: 0 0 25px #a855f7; }
-        
-        .scroll-container {
-            scrollbar-width: none;
-        }
-        .scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .pointer {
-            animation: pulse 1.5s infinite;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TGDV TOOL BADGE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #2a0a4a, #4a1d8c, #1e0b3d);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+      width: 100%;
+      max-width: 520px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(90deg, #5865f2, #7289da);
+      padding: 32px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #43b581, #f04747, #7289da);
+    }
+
+    .discord-logo {
+      width: 68px;
+      height: 68px;
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 15px;
+      margin-top: 5px;
+    }
+
+    .main-content {
+      padding: 35px 30px;
+    }
+
+    .profile-section {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 3px solid #5865f2;
+      object-fit: cover;
+    }
+
+    .profile-info h3 {
+      font-size: 18.5px;
+      font-weight: 600;
+    }
+
+    .logout-btn {
+      margin-left: auto;
+      background: none;
+      border: none;
+      font-size: 23px;
+      color: #f04747;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .logout-btn:hover { background: rgba(240,71,71,0.25); }
+
+    .token-section label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    #token {
+      width: 100%;
+      padding: 16px 52px 16px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 14px;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    #token:focus {
+      outline: none;
+      border-color: #5865f2;
+      box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.35);
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    .badge-selection h3 {
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .badge-options {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .badge-option {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 2px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 18px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .badge-option:hover {
+      transform: translateY(-4px);
+      border-color: #5865f2;
+    }
+
+    .badge-option.selected {
+      background: linear-gradient(135deg, #5865f2, #7289da);
+      border-color: #fff;
+      transform: scale(1.04);
+    }
+
+    .badge-icon img {
+      width: 78px;
+      height: 78px;
+      margin-bottom: 10px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    }
+
+    .badge-option span {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 14px;
+      font-size: 15.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .set-btn {
+      background: linear-gradient(135deg, #43b581, #5cbf2a);
+      color: white;
+    }
+
+    .remove-btn {
+      background: linear-gradient(135deg, #f04747, #e03e3e);
+      color: white;
+    }
+
+    .action-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    .status-message {
+      margin-top: 20px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      text-align: center;
+      min-height: 24px;
+    }
+
+    .success { background: rgba(67, 181, 129, 0.25); color: #43b581; }
+    .error   { background: rgba(240, 71, 71, 0.25); color: #f04747; }
+    .info    { background: rgba(88, 101, 242, 0.25); color: #b9bbff; }
+
+    .loading {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 15px;
+      color: #ccc;
+      font-size: 15px;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top: 3px solid #5865f2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer {
+      padding: 22px;
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.75;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="max-w-6xl mx-auto px-6 py-12 w-full">
-        
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-6xl font-black tracking-widest neon-pink">GACHA FRUITS</h1>
-            <p class="text-cyan-300 text-2xl mt-2">Vinh Dương • Blox Fruits Spinner</p>
-        </div>
-
-        <!-- Fruit Bar -->
-        <div class="relative mb-12">
-            <!-- Pointer -->
-            <div class="pointer absolute -top-6 left-1/2 -translate-x-1/2 z-30">
-                <div class="w-0 h-0 border-l-10 border-l-transparent border-r-10 border-r-transparent border-b-12 border-b-yellow-400"></div>
-            </div>
-
-            <div id="fruit-bar" 
-                 class="scroll-container flex gap-4 overflow-x-auto pb-6 px-4 snap-x snap-mandatory">
-                <!-- Fruits sẽ được JS render -->
-            </div>
-        </div>
-
-        <!-- Result -->
-        <div id="result" class="hidden text-center mb-10">
-            <p class="text-yellow-300 text-xl mb-3">Bạn vừa roll được:</p>
-            <div id="result-card" class="inline-block fruit-card rounded-3xl p-6 text-center">
-                <img id="result-img" class="w-32 h-32 mx-auto mb-4" src="">
-                <div id="result-name" class="text-4xl font-bold mb-1"></div>
-                <div id="result-rarity" class="text-2xl font-semibold"></div>
-            </div>
-        </div>
-
-        <!-- Spin Button + Cooldown -->
-        <div class="flex flex-col items-center gap-6">
-            <button onclick="startGacha()" id="spin-btn"
-                    class="px-20 py-8 text-3xl font-black bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 text-black rounded-3xl shadow-2xl hover:scale-110 transition-all flex items-center gap-5">
-                <i class="fa-solid fa-spinner fa-spin"></i>
-                <span>SPIN GACHA</span>
-            </button>
-
-            <div id="cooldown-box" class="hidden text-center">
-                <p class="text-orange-300 text-lg">Chờ để spin tiếp...</p>
-                <div class="text-5xl font-mono font-bold text-orange-400" id="countdown">30</div>
-            </div>
-        </div>
-
-        <div class="text-center mt-16 text-xs text-gray-400">
-            Cooldown 30 giây • Mythical cực hiếm
-        </div>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>TOOL BADGE | MAKE BY LPHN </h1>
+      <p>HypeSquad Badge Manager - Discord</p>
     </div>
 
-    <script>
-        const fruitsData = [
-            { id: 1, name: "Creation", rarity: "Legendary", color: "text-purple-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/8/8a/Portal_Fruit.png/revision/latest?cb=20231027115746" },
-            { id: 2, name: "Quake", rarity: "Legendary", color: "text-blue-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/4/42/Quake_Fruit.png/revision/latest?cb=20231027115754" },
-            { id: 3, name: "Kitsune", rarity: "Mythical", color: "text-pink-500", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/6/65/Kitsune_Fruit.png/revision/latest/scale-to-width-down/1200?cb=20241223162956" },
-            { id: 4, name: "Spirit", rarity: "Mythical", color: "text-cyan-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/6/66/Spirit_Fruit.png/revision/latest?cb=20240304190559" },
-            { id: 5, name: "T-Rex", rarity: "Mythical", color: "text-red-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/d/d9/T-Rex_Fruit.png/revision/latest?cb=20231226191220" },
-            { id: 6, name: "Dragon", rarity: "Mythical", color: "text-orange-500", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/c/c7/Dragon.png/revision/latest/scale-to-width/360?cb=20241231011212" },
-            { id: 7, name: "Dough", rarity: "Mythical", color: "text-rose-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/0/02/Dough_Fruit.png/revision/latest?cb=20231210155057" },
-            { id: 8, name: "Venom", rarity: "Mythical", color: "text-violet-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/d/d2/Venom_Fruit.png/revision/latest/scale-to-width-down/400?cb=20231027120425" },
-            { id: 9, name: "Shadow", rarity: "Legendary", color: "text-indigo-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/5/58/Shadow_Fruit.png/revision/latest?cb=20241229033053" },
-            { id: 10, name: "Buddha", rarity: "Legendary", color: "text-amber-400", img: "https://static.wikia.nocookie.net/roblox-blox-piece/images/d/df/Buddha_Fruit.png/revision/latest?cb=20231027115325" }
-        ];
+    <div class="main-content">
 
-        let isSpinning = false;
-        let cooldown = 30;
-        let timerInterval = null;
+      <!-- Profile -->
+      <div id="profileSection" class="profile-section hidden">
+        <img id="userAvatar" class="profile-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="avatar">
+        <div class="profile-info">
+          <span style="font-size:13px;opacity:0.8;">Connected as</span>
+          <h3 id="username">...</h3>
+        </div>
+        <button id="logoutBtn" class="logout-btn">✕</button>
+      </div>
 
-        function renderFruitBar() {
-            const container = document.getElementById('fruit-bar');
-            container.innerHTML = '';
+      <!-- Token -->
+      <div class="token-section">
+        <label>Discord Token</label>
+        <div class="input-wrapper">
+          <input type="password" id="token" placeholder="Paste your token here" />
+          <button id="toggleToken" class="toggle-btn">👁️</button>
+        </div>
+      </div>
 
-            fruitsData.forEach(fruit => {
-                const card = document.createElement('div');
-                card.className = `fruit-card min-w-[160px] snap-center rounded-3xl p-4 text-center flex-shrink-0`;
-                if (fruit.rarity === "Mythical") card.classList.add('mythical');
-                if (fruit.rarity === "Legendary") card.classList.add('legendary');
+      <!-- Badges -->
+      <div class="badge-selection">
+        <h3>Choose HypeSquad Badge</h3>
+        <div class="badge-options">
+          <div class="badge-option" data-house="2">
+            <div class="badge-icon">
+              <img src="https://cdn3.emoji.gg/emojis/6601-hypesquad-bravery.png" alt="Bravery">   <!-- Bạn có thể thay link ảnh Bravery của bạn -->
+            </div>
+            <span>Bravery</span>
+          </div>
 
-                card.innerHTML = `
-                    <img src="${fruit.img}" class="w-24 h-24 mx-auto mb-3 object-contain">
-                    <div class="font-bold text-xl mb-1">${fruit.name}</div>
-                    <div class="${fruit.color} text-sm font-semibold">${fruit.rarity}</div>
-                `;
-                container.appendChild(card);
-            });
+          <div class="badge-option" data-house="3">
+            <div class="badge-icon">
+              <img src="https://cdn3.emoji.gg/emojis/9554-hypesquad-brilliance.png" alt="Brilliance"> <!-- Thay link ảnh Brilliance của bạn -->
+            </div>
+            <span>Brilliance</span>
+          </div>
+
+          <div class="badge-option" data-house="1">
+            <div class="badge-icon">
+              <img src="https://static.wikia.nocookie.net/discord/images/c/ca/Hypesquad_balance_badge.png/revision/latest?cb=20210611054027" alt="Balance">    <!-- Thay link ảnh Balance của bạn -->
+            </div>
+            <span>Balance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="action-buttons">
+        <button id="setBadge" class="action-btn set-btn">ADD BADGE</button>
+        <button id="removeBadge" class="action-btn remove-btn">REMOVE BADGE</button>
+      </div>
+
+      <div id="status" class="status-message info">
+        Enter your token and choose the badge you want
+      </div>
+
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <span>Processing...</span>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      ⚠️ Never share your Discord token with anyone<br>
+      This tool runs locally in your browser
+    </div>
+  </div>
+
+  <script>
+    class DiscordHypeSquadManager {
+      constructor() {
+        this.token = null;
+        this.selectedHouse = null;
+        this.init();
+      }
+
+      init() {
+        this.bindEvents();
+        this.loadSavedToken();
+      }
+
+      bindEvents() {
+        const tokenInput = document.getElementById('token');
+        tokenInput.addEventListener('input', () => {
+          this.token = this.sanitizeToken(tokenInput.value);
+          localStorage.setItem('discord_token', this.token);
+          this.updateButtonState();
+        });
+
+        document.getElementById('toggleToken').addEventListener('click', () => {
+          const isHidden = tokenInput.type === 'password';
+          tokenInput.type = isHidden ? 'text' : 'password';
+          document.getElementById('toggleToken').textContent = isHidden ? '🙈' : '👀';
+        });
+
+        document.querySelectorAll('.badge-option').forEach(option => {
+          option.addEventListener('click', () => this.selectBadge(option));
+        });
+
+        document.getElementById('setBadge').addEventListener('click', () => this.setBadge());
+        document.getElementById('removeBadge').addEventListener('click', () => this.removeBadge());
+        document.getElementById('logoutBtn').addEventListener('click', () => this.logout());
+      }
+
+      selectBadge(el) {
+        document.querySelectorAll('.badge-option').forEach(e => e.classList.remove('selected'));
+        el.classList.add('selected');
+        this.selectedHouse = parseInt(el.dataset.house);
+        this.updateButtonState();
+      }
+
+      updateButtonState() {
+        document.getElementById('setBadge').disabled = !(this.token && this.selectedHouse);
+      }
+
+      sanitizeToken(t) {
+        let token = String(t || '').trim();
+        if ((token.startsWith('"') && token.endsWith('"')) || (token.startsWith("'") && token.endsWith("'"))) {
+          token = token.slice(1, -1).trim();
         }
+        return token;
+      }
 
-        function getRandomFruit() {
-            const weights = [10, 15, 20, 25, 30]; // Common to Mythical
-            let total = weights.reduce((a,b)=>a+b, 0);
-            let rand = Math.random() * total;
-            
-            let sum = 0;
-            for (let i = 0; i < fruitsData.length; i++) {
-                sum += (fruitsData[i].rarity === "Mythical" ? 8 : 
-                       fruitsData[i].rarity === "Legendary" ? 15 : 25);
-                if (rand <= sum) return fruitsData[i];
-            }
-            return fruitsData[fruitsData.length - 1];
+      async fetchUserProfile() {
+        if (!this.token) return;
+        try {
+          const res = await fetch('https://discord.com/api/v9/users/@me', {
+            headers: { 'Authorization': this.token }
+          });
+          if (res.ok) {
+            const user = await res.json();
+            this.showProfile(user);
+          } else {
+            this.logout();
+          }
+        } catch(e) {}
+      }
+
+      showProfile(user) {
+        document.getElementById('profileSection').classList.remove('hidden');
+        document.getElementById('username').textContent = user.username + (user.discriminator !== '0' ? '#' + user.discriminator : '');
+
+        const avatarUrl = user.avatar 
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator)%5}.png`;
+        document.getElementById('userAvatar').src = avatarUrl;
+      }
+
+      async setBadge() {
+        if (!this.token || !this.selectedHouse) return;
+        this.showLoading(true);
+
+        const houseMap = {1: 3, 2: 1, 3: 2};
+        const house_id = houseMap[this.selectedHouse];
+
+        try {
+          const res = await fetch('https://discord.com/api/v9/hypesquad/online', {
+            method: 'POST',
+            headers: {
+              'Authorization': this.token,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ house_id })
+          });
+
+          if (res.ok) {
+            this.showStatus('✅ Badge added successfully!', 'success');
+            setTimeout(() => this.fetchUserProfile(), 1000);
+          } else {
+            this.showStatus('❌ Failed to add badge', 'error');
+          }
+        } catch(e) {
+          this.showStatus('❌ Connection error', 'error');
+        } finally {
+          this.showLoading(false);
         }
+      }
 
-        async function startGacha() {
-            if (isSpinning) return;
-            isSpinning = true;
+      async removeBadge() {
+        if (!this.token) return;
+        this.showLoading(true);
 
-            const btn = document.getElementById('spin-btn');
-            btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ĐANG QUAY...`;
+        try {
+          const res = await fetch('https://discord.com/api/v9/hypesquad/online', {
+            method: 'DELETE',
+            headers: { 'Authorization': this.token }
+          });
 
-            document.getElementById('result').classList.add('hidden');
-
-            // Animation cuộn ngang
-            const container = document.getElementById('fruit-bar');
-            let scrollSpeed = 35;
-            let scrollPos = 0;
-            const targetFruit = getRandomFruit();
-            const targetIndex = fruitsData.findIndex(f => f.id === targetFruit.id);
-
-            const animation = setInterval(() => {
-                scrollPos += scrollSpeed;
-                container.scrollLeft = scrollPos;
-
-                // Giảm tốc dần
-                if (scrollPos > 800) scrollSpeed = Math.max(4, scrollSpeed - 1.2);
-
-                // Dừng gần target
-                if (scrollSpeed <= 6 && Math.abs(container.scrollLeft - (targetIndex * 180)) < 60) {
-                    clearInterval(animation);
-                    showResult(targetFruit);
-                }
-            }, 16);
+          if (res.ok || res.status === 204) {
+            this.showStatus('✅ Badge removed successfully!', 'success');
+            document.querySelectorAll('.badge-option').forEach(e => e.classList.remove('selected'));
+            this.selectedHouse = null;
+            setTimeout(() => this.fetchUserProfile(), 1000);
+          } else {
+            this.showStatus('❌ Failed to remove badge', 'error');
+          }
+        } catch(e) {
+          this.showStatus('❌ Connection error', 'error');
+        } finally {
+          this.showLoading(false);
         }
+      }
 
-        function showResult(fruit) {
-            isSpinning = false;
+      logout() {
+        this.token = null;
+        localStorage.removeItem('discord_token');
+        document.getElementById('profileSection').classList.add('hidden');
+        document.getElementById('token').value = '';
+        document.querySelectorAll('.badge-option').forEach(e => e.classList.remove('selected'));
+        this.selectedHouse = null;
+        this.showStatus('Logged out', 'info');
+      }
 
-            document.getElementById('result-img').src = fruit.img;
-            document.getElementById('result-name').textContent = fruit.name;
-            document.getElementById('result-rarity').innerHTML = `
-                <span class="${fruit.color}">${fruit.rarity}</span>
-            `;
-            document.getElementById('result').classList.remove('hidden');
-
-            // Confetti nếu Mythical
-            if (fruit.rarity === "Mythical") launchConfetti();
-
-            startCooldown();
+      loadSavedToken() {
+        const saved = localStorage.getItem('discord_token');
+        if (saved) {
+          this.token = saved;
+          document.getElementById('token').value = saved;
+          this.fetchUserProfile();
         }
+      }
 
-        function startCooldown() {
-            let time = cooldown;
-            const countdownEl = document.getElementById('countdown');
-            const box = document.getElementById('cooldown-box');
-            box.classList.remove('hidden');
+      showStatus(msg, type = 'info') {
+        const el = document.getElementById('status');
+        el.textContent = msg;
+        el.className = `status-message ${type}`;
+        setTimeout(() => {
+          el.textContent = 'Enter your token and choose the badge you want';
+          el.className = 'status-message info';
+        }, 5500);
+      }
 
-            if (timerInterval) clearInterval(timerInterval);
+      showLoading(show) {
+        document.getElementById('loading').style.display = show ? 'flex' : 'none';
+      }
+    }
 
-            timerInterval = setInterval(() => {
-                time--;
-                countdownEl.textContent = time;
-
-                if (time <= 0) {
-                    clearInterval(timerInterval);
-                    box.classList.add('hidden');
-                    const btn = document.getElementById('spin-btn');
-                    btn.disabled = false;
-                    btn.innerHTML = `<i class="fa-solid fa-spinner"></i> <span>SPIN GACHA</span>`;
-                }
-            }, 1000);
-        }
-
-        function launchConfetti() {
-            for (let i = 0; i < 200; i++) {
-                setTimeout(() => {
-                    const c = document.createElement('div');
-                    c.style.cssText = `position:fixed; left:${Math.random()*100}vw; top:-20px; width:12px; height:12px; 
-                                      background:${['#ff00ff','#00f7ff','#ffff00'][Math.floor(Math.random()*3)]}; 
-                                      z-index:9999; border-radius:50%; opacity:0.9;`;
-                    document.body.appendChild(c);
-                    
-                    let y = 0;
-                    const fall = setInterval(() => {
-                        y += 10 + Math.random() * 8;
-                        c.style.top = y + 'px';
-                        c.style.transform = `rotate(${y*6}deg)`;
-                        if (y > window.innerHeight + 50) {
-                            clearInterval(fall);
-                            c.remove();
-                        }
-                    }, 20);
-                }, i * 2);
-            }
-        }
-
-        // Khởi tạo
-        window.onload = () => {
-            renderFruitBar();
-            console.log('%cGacha Fruits Horizontal - Siêu đẹp như yêu cầu!', 'color:#ff00ff; font-size:16px');
-        };
-    </script>
+    window.onload = () => new DiscordHypeSquadManager();
+  </script>
 </body>
-</html>
+</html> 
